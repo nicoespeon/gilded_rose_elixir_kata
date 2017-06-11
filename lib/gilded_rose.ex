@@ -6,6 +6,7 @@ defmodule GildedRose do
   @aged_brie "Aged Brie"
   @backstage_pass "Backstage passes to a TAFKAL80ETC concert"
   @sulfura "Sulfuras, Hand of Ragnaros"
+  @conjured "Conjured"
 
   @max_quality 50
   @min_quality 0
@@ -54,6 +55,12 @@ defmodule GildedRose do
   end
 
   defp update_item_quality(item = %{name: name}) when name == @sulfura, do: item
+
+  defp update_item_quality(item = %{name: name}) when name == @conjured do
+    item
+    |> decrease_quality
+    |> decrease_quality
+  end
 
   defp update_item_quality(item = %{sell_in: sell_in}) when sell_in < 0 do
     item

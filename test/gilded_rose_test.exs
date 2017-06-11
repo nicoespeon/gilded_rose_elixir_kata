@@ -81,4 +81,13 @@ defmodule GildedRoseTest do
 
     assert result == expected_result
   end
+
+  test "conjured item quality decrease by 2 after an update" do
+    item = [%Item{name: "Conjured", sell_in: 4, quality: 13}]
+    expected_result = [%Item{name: "Conjured", sell_in: 3, quality: 11}]
+
+    result = GildedRose.update_quality(item)
+
+    assert result == expected_result
+  end
 end
